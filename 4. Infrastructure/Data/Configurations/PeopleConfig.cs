@@ -22,5 +22,7 @@ public class PeopleConfig : IEntityTypeConfiguration<People>
 			.WithMany()
 			.HasForeignKey(s => s.IdentityTypeId)
 			.OnDelete(DeleteBehavior.Restrict);
+
+		builder.HasIndex(s => s.IdentityTypeId);
 	}
 }

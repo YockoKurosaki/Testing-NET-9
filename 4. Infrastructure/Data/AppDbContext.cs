@@ -6,7 +6,6 @@ namespace Data;
 public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(options)
 {
 	public DbSet<Appointment> Appointment { get; set; }
-	public DbSet<Holiday> Holiday { get; set; }
 	public DbSet<IdentityType> IdentityType { get; set; }
 	public DbSet<People> People { get; set; }
 	public DbSet<PeopleHolidays> PeopleHolidays { get; set; }
@@ -15,7 +14,6 @@ public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(op
 	public DbSet<Procedure> Procedure { get; set; }
 	public DbSet<ProcedureSchedule> ProcedureSchedule { get; set; }
 	public DbSet<Profession> Profession { get; set; }
-	public DbSet<Schedule> Schedule { get; set; }
 	public DbSet<Status> Status { get; set; }
 	
 	protected override void OnModelCreating(ModelBuilder modelBuilder)

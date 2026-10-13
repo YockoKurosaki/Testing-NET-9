@@ -10,8 +10,8 @@ public class Appointment
 		public DateTime StartAt { get; set; }
 		public DateTime EndAt { get; set; }
 		public DateTime AppointmentDate { get; set; }
-		public DateTime? LastUpdated { get; set; }
-		public DateTime? DeletedOn { get; set; }
+		public DateTime LastUpdated { get; set; }
+		public DateTime DeletedOn { get; set; }
 		public virtual People? ClientPeople { get; set; }
 		public virtual People? ProfessionalPeople { get; set; }
 		public virtual Procedure? Procedure { get; set; }

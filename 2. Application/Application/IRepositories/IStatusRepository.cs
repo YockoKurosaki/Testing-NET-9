@@ -1,6 +1,6 @@
 ﻿using Domain.Entities;
 
-namespace Domain.Interfaces;
+namespace Application.IRepositories;
 
 public interface IStatusRepository : IBaseRepository<Status>
 {
