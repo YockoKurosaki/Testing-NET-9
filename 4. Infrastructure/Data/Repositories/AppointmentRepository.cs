@@ -1,8 +1,8 @@
 ﻿using Application.Filters;
+using Application.IRepositories;
+using Application.Response;
 using Domain.Entities;
-using Domain.Interfaces;
 using Microsoft.EntityFrameworkCore;
-using Utils.Response;
 
 namespace Data.Repositories;
 
@@ -18,7 +18,7 @@ public class AppointmentRepository(AppDbContext context) : BaseRepository<Appoin
 			.FirstOrDefaultAsync(ps => ps.Id == id, cancellationToken);
 	}
 
-	public async Task<PagedResult<Appointment>?> GetFilteredSimpleAsync(Appointment filter, CancellationToken cancellationToken = default)
+	public async Task<PagedResult<Appointment>?> GetFilteredSimpleAsync(AppointmentFilter filter, CancellationToken cancellationToken = default)
 	{
 		IQueryable<Appointment> queryable = _dbSet
 				.Include(a => a.ClientPeople)
@@ -26,14 +26,14 @@ public class AppointmentRepository(AppDbContext context) : BaseRepository<Appoin
 				.Include(a => a.Procedure)
 				.Include(a => a.Status);
 
-		if (filter.ClientPeopleId.HasValue)
+		if (filter.ClientId.HasValue)
 		{
-			queryable = queryable.Where(a => a.ClientPeopleId == filter.ClientPeopleId.Value);
+			queryable = queryable.Where(a => a.ClientPeopleId == filter.ClientId.Value);
 		}
 
-		if (filter.ProfessionalPeopleId.HasValue)
+		if (filter.ProfessionalId.HasValue)
 		{
-			queryable = queryable.Where(a => a.ProfessionalPeopleId == filter.ProfessionalPeopleId.Value);
+			queryable = queryable.Where(a => a.ProfessionalPeopleId == filter.ProfessionalId.Value);
 		}
 
 		if (filter.StatusId.HasValue)
@@ -41,21 +41,21 @@ public class AppointmentRepository(AppDbContext context) : BaseRepository<Appoin
 			queryable = queryable.Where(a => a.StatusId == filter.StatusId.Value);
 		}
 
-		if (filter.StartAt.HasValue)
+		if (filter.StartDateFrom.HasValue)
 		{
-			queryable = queryable.Where(a => a.StartAt >= filter.StartAt.Value);
+			queryable = queryable.Where(a => a.StartAt >= filter.StartDateFrom.Value);
 		}
 
-		if (filter.EndAt.HasValue)
+		if (filter.EndDateTo.HasValue)
 		{
-			queryable = queryable.Where(a => a.StartAt <= filter.EndAt.Value);
+			queryable = queryable.Where(a => a.StartAt <= filter.EndDateTo.Value);
 		}
 
 		int totalCount = await queryable.CountAsync(cancellationToken);
 
 		// Ordenamiento y paginación
 		var items = await queryable
-				.OrderByDescending(a => a.StartAt) // Más recientes primero
+				.OrderByDescending(a => a.Id)
 				.Skip((filter.Page - 1) * filter.PageSize)
 				.Take(filter.PageSize)
 				.ToListAsync(cancellationToken);

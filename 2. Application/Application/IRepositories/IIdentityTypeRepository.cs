@@ -2,6 +2,4 @@
 
 namespace Application.IRepositories;
 
-public interface IIdentityTypeRepository : IBaseRepository<IdentityType>
-{
-}
+public interface IIdentityTypeRepository : IBaseRepository<IdentityType>;

@@ -1,4 +1,7 @@
-﻿namespace Domain.Entities;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.Xml.Linq;
+
+namespace Domain.Entities;
 
 public class People
 {
@@ -14,4 +17,7 @@ public class People
 	public DateTime? BirthDate { get; set; }
 	public DateTime? DeletedOn { get; set; }
 	public virtual IdentityType? IdentityType { get; set; }
+
+	[NotMapped]
+	public string FullName => $"{Names} {Lastnames}".Trim();
 }

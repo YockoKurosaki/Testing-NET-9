@@ -11,9 +11,9 @@ public class ScheduleConfig : IEntityTypeConfiguration<Schedule>
 
 		builder.HasKey(s => s.Id);
 
-		builder.Property(s => s.StartTime).IsRequired();
+		builder.Property(s => s.Start).IsRequired();
 
-		builder.Property(s => s.EndTime).IsRequired();
+		builder.Property(s => s.End).IsRequired();
 
 		builder.Property(s => s.DeletedOn).IsRequired(false);
 

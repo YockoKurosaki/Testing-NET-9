@@ -2,6 +2,4 @@
 
 namespace Application.IRepositories;
 
-public interface IHolidayRepository : IBaseRepository<Holiday>
-{
-}
+public interface IHolidayRepository : IBaseRepository<Holiday>;

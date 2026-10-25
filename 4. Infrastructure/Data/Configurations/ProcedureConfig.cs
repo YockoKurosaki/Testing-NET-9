@@ -18,5 +18,9 @@ public class ProcedureConfig : IEntityTypeConfiguration<Procedure>
 		builder.Property(s => s.DeletedOn).IsRequired(false);
 
 		builder.HasQueryFilter(s => s.DeletedOn == null);
+		builder.HasOne(p => p.Profession)
+			.WithMany()
+			.HasForeignKey(p => p.ProfessionId)
+			.OnDelete(DeleteBehavior.Restrict);
 	}
 }

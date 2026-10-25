@@ -2,6 +2,4 @@
 
 namespace Application.IRepositories;
 
-public interface IProcedureRepository : IBaseRepository<Procedure>
-{
-}
+public interface IProcedureRepository : IBaseRepository<Procedure>;

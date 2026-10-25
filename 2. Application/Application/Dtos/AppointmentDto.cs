@@ -18,7 +18,8 @@ public class UpdateAppointmentDto
 	public DateTime? StartAt { get; set; }
 	public DateTime? EndAt { get; set; }
 }
-public class AppointmentSimpleDto
+
+public class SimpleAppointmentDto
 {
 	public int Id { get; set; }
 	public string? ClientName{ get; set; }

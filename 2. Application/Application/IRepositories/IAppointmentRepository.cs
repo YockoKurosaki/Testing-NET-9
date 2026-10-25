@@ -1,6 +1,6 @@
 ﻿using Application.Filters;
+using Application.Response;
 using Domain.Entities;
-using Utils.Response;
 
 namespace Application.IRepositories;
 

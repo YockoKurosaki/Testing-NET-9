@@ -2,6 +2,4 @@
 
 namespace Application.IRepositories;
 
-public interface IProfessionRepository : IBaseRepository<Profession>
-{
-}
+public interface IProfessionRepository : IBaseRepository<Profession>;

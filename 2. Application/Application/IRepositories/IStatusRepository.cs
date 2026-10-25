@@ -2,6 +2,4 @@
 
 namespace Application.IRepositories;
 
-public interface IStatusRepository : IBaseRepository<Status>
-{
-}
+public interface IStatusRepository : IBaseRepository<Status>;
